@@ -31,8 +31,8 @@ describe Pack do
     let(:hand) { pack.deal(5) }
 
     it "gives a random card from the pack" do
-      hand.should be_an_instance_of(Array)
-      hand.count.should == 5
+      hand.should be_an_instance_of(Hand)
+      hand.cards.count.should == 5
     end
 
     it "has 5 less cards in the pack" do
@@ -41,11 +41,11 @@ describe Pack do
     end
 
     it "should have unique cards in the dealt hand" do
-      hand.uniq!.should be_nil
+      hand.cards.uniq!.should be_nil
     end
 
     it "should not have the dealt cards in the pack" do
-      (dealt + hand).uniq!.should be_nil
+      (dealt + hand.cards).uniq!.should be_nil
     end
 
     it "cannot deal more cards than are in the pack" do
