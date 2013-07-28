@@ -7,8 +7,7 @@ class PokerHand
   end
 
   def straight_flush?
-    return false unless @hand.same_suit?
-    return false unless @hand.sequential?
+    return false unless @hand.same_suit? && @hand.sequential?
     true
   end
 

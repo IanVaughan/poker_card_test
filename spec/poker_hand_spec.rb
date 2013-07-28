@@ -22,12 +22,23 @@ describe PokerHand do
       end
 
       context "without a straight flush" do
-        let(:hand) { Hand.new([Card.new('2', 'C'),
-                      Card.new('3', 'H'),
-                      Card.new('4', 'S'),
-                      Card.new('5', 'D'),
-                      Card.new('6', 'C')]) }
-        it { should be_false }
+        describe "mixed suit" do
+          let(:hand) { Hand.new([Card.new('2', 'C'),
+                        Card.new('3', 'H'),
+                        Card.new('4', 'S'),
+                        Card.new('5', 'D'),
+                        Card.new('6', 'C')]) }
+          it { should be_false }
+        end
+
+        describe "mixed values" do
+          let(:hand) { Hand.new([Card.new('2', 'C'),
+                        Card.new('3', 'C'),
+                        Card.new('6', 'C'),
+                        Card.new('7', 'C'),
+                        Card.new('8', 'C')]) }
+          it { should be_false }
+        end
       end
     end
 
