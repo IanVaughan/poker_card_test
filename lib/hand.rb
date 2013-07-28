@@ -13,12 +13,16 @@ class Hand
     @cards.count
   end
 
+  def highest_card
+    @cards.last
+  end
+
   def beats?(other_hand)
     if straight_flush? || other_hand.straight_flush?
       return true if straight_flush? && !other_hand.straight_flush?
       return false if !straight_flush? && other_hand.straight_flush?
       if straight_flush? && other_hand.straight_flush?
-        return @cards.last.value > other_hand.sort.last.value ? true : false
+        return highest_card.value > other_hand.highest_card.value ? true : false
       end
     end
     raise
