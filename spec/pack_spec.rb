@@ -35,7 +35,8 @@ describe Pack do
     end
 
     it "has 5 less cards in the pack" do
-      dealt.count.should == 52 - 5
+      hand
+      dealt.count.should == (52 - 5)
     end
 
     it "should have unique cards in the dealt hand" do
@@ -48,8 +49,9 @@ describe Pack do
 
     it "cannot deal more cards than are in the pack" do
       # Could raise or return how many are left, depends whats best later on really.
+      # bit bad as its not using the let :hand defined above
       pack.deal(55).should be_nil
-      dealt.count.should == 52 - 5
+      dealt.count.should == 52
     end
   end
 end
