@@ -41,7 +41,6 @@ class Hand
   end
 
   def sequential?
-    start_index = Pack::VALUES.index(@cards.first.value)
     @cards.each_cons(2).all? do |c1, c2|
       Pack::VALUES.index(c1.value) == Pack::VALUES.index(c2.value) - 1
     end
