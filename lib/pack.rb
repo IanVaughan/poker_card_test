@@ -12,9 +12,16 @@ class Pack
     SUITS.each do |suit|
       VALUES.each { |value| @cards << "#{value}#{suit}" }
     end
+    @dealt = []
   end
 
   def count
     @cards.count
+  end
+
+  def deal(count)
+    @dealt = []
+    count.times { @dealt << @cards[rand(@cards.count)] }
+    @dealt
   end
 end
