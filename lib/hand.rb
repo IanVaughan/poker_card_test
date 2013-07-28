@@ -29,8 +29,7 @@ class Hand
   end
 
   def straight_flush?
-    return false unless same_suit? && sequential?
-    true
+    (same_suit? && sequential?) ? true : false
   end
 
   def same_suit?
