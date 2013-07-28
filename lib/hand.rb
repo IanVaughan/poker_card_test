@@ -32,8 +32,16 @@ class Hand
     (same_suit? && sequential?) ? true : false
   end
 
+  def four_of_a_kind?
+    @cards.any? { |c| occurance_count_of(c.value) == 4 }
+  end
+
   def same_suit?
     @cards.all? { |s| s.suit == @cards.first.suit }
+  end
+
+  def occurance_count_of value
+    @cards.count { |c| c.value == value }
   end
 
   def sort

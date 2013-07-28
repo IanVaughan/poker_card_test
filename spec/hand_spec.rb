@@ -67,7 +67,9 @@ describe Hand do
     end
   end
 
+  #  let(:hand) { described_class.new(hand) }
   context "rules" do
+    # 5 cards of the same suit with consecutive values. Ranked by the highest card in the hand.
     describe "finds a Straight flush" do
       subject { hand.straight_flush? }
 
@@ -104,7 +106,29 @@ describe Hand do
       end
     end
 
-    it "finds Four of a kind"
+    # 4 cards with the same value. Ranked by the value of the 4 cards.
+    describe "finds Four of a kind" do
+      subject { hand.four_of_a_kind? }
+
+      context "with Four of a kind" do
+        let(:cards) { [Card.new('2', 'C'),
+                      Card.new('2', 'D'),
+                      Card.new('2', 'H'),
+                      Card.new('2', 'S'),
+                      Card.new('6', 'C')] }
+        it { should be_true }
+      end
+
+      context "without Four of a kind" do
+        let(:cards) { [Card.new('2', 'C'),
+                      Card.new('3', 'D'),
+                      Card.new('2', 'H'),
+                      Card.new('2', 'S'),
+                      Card.new('6', 'C')] }
+        it { should be_false }
+      end
+    end
+
     it "finds Full House"
     it "finds Flush"
     it "finds Straight"
