@@ -155,12 +155,12 @@ describe Hand do
       end
 
       describe 'when other hand is a higher straight flush' do
-        let(:hand_b) { Hand.new(straight_flush('5', 'H')) }
+        let(:hand_b) { straight_flush('5', 'H') }
         it { should be_false }
       end
 
       describe 'when other hand is a lower straight flush' do
-        let(:hand_b) { Hand.new(straight_flush('2', 'H')) }
+        let(:hand_b) { straight_flush('2', 'H') }
         it { should be_true }
       end
     end
