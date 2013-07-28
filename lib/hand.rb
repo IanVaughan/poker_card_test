@@ -25,7 +25,16 @@ class Hand
         return highest_card.value > other_hand.highest_card.value ? true : false
       end
     end
-    raise
+
+    if four_of_a_kind? || other_hand.four_of_a_kind?
+      return true if four_of_a_kind? && !other_hand.four_of_a_kind?
+      return false if !four_of_a_kind? && other_hand.four_of_a_kind?
+      if four_of_a_kind? && other_hand.four_of_a_kind?
+        return highest_card.value > other_hand.highest_card.value ? true : false
+      end
+    end
+
+    raise "Not Implemented rule yet!"
   end
 
   def straight_flush?

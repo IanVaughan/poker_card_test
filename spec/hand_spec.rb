@@ -153,7 +153,7 @@ describe Hand do
     end
 
     context 'with four_of_a_kind' do
-      let(:cards) { four_of_a_kind_cards('3') }
+      let(:cards) { four_of_a_kind_cards('6') }
 
       describe 'when other hand is not a four_of_a_kind' do
         let(:hand_b) { random_hand }
@@ -161,12 +161,12 @@ describe Hand do
       end
 
       describe 'when other hand is a higher four_of_a_kind' do
-        let(:hand_b) { four_of_a_kind_hand('5') }
+        let(:hand_b) { four_of_a_kind_hand('7') }
         it { should be_false }
       end
 
       describe 'when other hand is a lower four_of_a_kind' do
-        let(:hand_b) { four_of_a_kind_hand('2') }
+        let(:hand_b) { four_of_a_kind_hand('4') }
         it { should be_true }
       end
     end
