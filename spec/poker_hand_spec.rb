@@ -12,6 +12,7 @@ describe PokerHand do
       context "with a straight flush" do
         # could create a starting point and iterate over every combo
         # i.e 2C, 3C, 4C, 5C, 6C, then 3C, 4C, 5C, 6C, 7C, etc
+        # Could also create helper methods to give a range and return a Hand
         let(:hand) { Hand.new([Card.new('2', 'C'),
                       Card.new('3', 'C'),
                       Card.new('4', 'C'),
