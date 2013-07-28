@@ -1,5 +1,7 @@
+require 'card'
+require 'hand'
+
 class Pack
-  include Enumerable
 
   attr_reader :cards
 
@@ -10,7 +12,7 @@ class Pack
   def initialize
     @cards = []
     SUITS.each do |suit|
-      VALUES.each { |value| @cards << "#{value}#{suit}" }
+      VALUES.each { |value| @cards << Card.new(value, suit) }
     end
     @dealt = []
   end

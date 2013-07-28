@@ -19,14 +19,15 @@ describe Pack do
     end
 
     it "has cards as I expect" do
-      dealt[0].should == '2C'
-      dealt[1].should == '3C'
+      dealt[0].to_s.should == '2C'
+      dealt[1].to_s.should == '3C'
     end
   end
 
   context "dealing cards" do
     # A poker hand consists of 5 cards dealt from the deck.
     # so, just dealing with 5 card deal atm
+    # also have not dealt with returning cards to the pack yet!
     let(:hand) { pack.deal(5) }
 
     it "gives a random card from the pack" do
