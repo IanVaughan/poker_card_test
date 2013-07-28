@@ -16,13 +16,14 @@ end
 
 
 def four_of_a_kind_cards(value)
-  4.times.collect do |c|
-    Card.new(Pack::VALUES.index(value), 'k')
+  a = 4.times.collect do |c|
+    Card.new(value, 'k')
   end
+  a << Card.new('2' == value ? '3' : '2', 'x')
 end
 
 def four_of_a_kind_hand(value)
-  Hand.new(four_of_a_kind_cards(value) << Card.new('2', 'x'))
+  Hand.new(four_of_a_kind_cards(value))
 end
 
 def random_hand
