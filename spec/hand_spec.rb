@@ -107,11 +107,7 @@ describe Hand do
       subject { hand.four_of_a_kind? }
 
       context "with Four of a kind" do
-        let(:cards) { [Card.new('2', 'C'),
-                      Card.new('2', 'D'),
-                      Card.new('2', 'H'),
-                      Card.new('2', 'S'),
-                      Card.new('6', 'C')] }
+        let(:cards) { four_of_a_kind_cards('2') }
         it { should be_true }
       end
 
@@ -138,7 +134,7 @@ describe Hand do
     subject { hand.beats?(hand_b) }
 
     context 'with a straight_flush' do
-      let(:cards) { straight_flush_hand('3', 'C') }
+      let(:cards) { straight_flush_cards('3', 'C') }
 
       describe 'when other hand is not a straight flush' do
         let(:hand_b) { random_hand }
@@ -152,6 +148,25 @@ describe Hand do
 
       describe 'when other hand is a lower straight flush' do
         let(:hand_b) { straight_flush_hand('2', 'H') }
+        it { should be_true }
+      end
+    end
+
+    context 'with four_of_a_kind' do
+      let(:cards) { four_of_a_kind_cards('3') }
+
+      describe 'when other hand is not a four_of_a_kind' do
+        let(:hand_b) { random_hand }
+        it { should be_true }
+      end
+
+      describe 'when other hand is a higher four_of_a_kind' do
+        let(:hand_b) { four_of_a_kind_hand('5') }
+        it { should be_false }
+      end
+
+      describe 'when other hand is a lower four_of_a_kind' do
+        let(:hand_b) { four_of_a_kind_hand('2') }
         it { should be_true }
       end
     end
