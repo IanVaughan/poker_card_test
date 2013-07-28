@@ -9,19 +9,21 @@ describe Hand do
     it { should be_true }
   end
 
-  context "same suit" do
-    let(:cards) { [Card.new('2', 'C'), Card.new('3', 'C')] }
+  describe '#same_suit?' do
+    context "when they are the same suit" do
+      let(:cards) { [Card.new('2', 'C'), Card.new('3', 'C')] }
 
-    it "detects if they are of the same suit" do
-      subject.same_suit?.should be_true
+      it "returns true" do
+        subject.same_suit?.should be_true
+      end
     end
-  end
 
-  context "not same suit" do
-    let(:cards) { [Card.new('2', 'H'), Card.new('3', 'C')] }
+    context "when they are not tje same suit" do
+      let(:cards) { [Card.new('2', 'H'), Card.new('3', 'C')] }
 
-    it "detects if they are of the same suit" do
-      subject.same_suit?.should be_false
+      it "returns false" do
+        subject.same_suit?.should be_false
+      end
     end
   end
 end
