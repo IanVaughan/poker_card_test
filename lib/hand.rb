@@ -12,6 +12,11 @@ class Hand
     @cards.count
   end
 
+  def straight_flush?
+    return false unless same_suit? && sequential?
+    true
+  end
+
   def same_suit?
     @cards.all? { |s| s.suit == @cards.first.suit }
   end
