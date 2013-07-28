@@ -1,4 +1,4 @@
-require 'rspec/core'
+require 'spec_helper'
 require './lib/hand'
 
 describe Hand do

@@ -1,4 +1,4 @@
-require 'rspec/core'
+require 'spec_helper'
 require './lib/pack'
 
 describe Pack do
