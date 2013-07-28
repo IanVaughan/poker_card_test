@@ -6,6 +6,7 @@ class Hand
 
   def initialize cards
     @cards = cards
+    @cards = sort
   end
 
   def count
@@ -17,7 +18,7 @@ class Hand
       return true if straight_flush? && !other_hand.straight_flush?
       return false if !straight_flush? && other_hand.straight_flush?
       if straight_flush? && other_hand.straight_flush?
-        return sort.last.value > other_hand.sort.last.value ? true : false
+        return @cards.last.value > other_hand.sort.last.value ? true : false
       end
     end
     raise
@@ -37,9 +38,8 @@ class Hand
   end
 
   def sequential?
-    ordered = sort
-    start_index = Pack::VALUES.index(ordered.first.value)
-    ordered.each_cons(2).all? do |c1, c2|
+    start_index = Pack::VALUES.index(@cards.first.value)
+    @cards.each_cons(2).all? do |c1, c2|
       Pack::VALUES.index(c1.value) == Pack::VALUES.index(c2.value) - 1
     end
   end
