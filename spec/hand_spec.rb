@@ -145,12 +145,7 @@ describe Hand do
       let(:cards) { straight_flush('3', 'C') }
 
       describe 'when other hand is not a straight flush' do
-        let(:hand_b) { Hand.new([
-                          Card.new('2', 'C'),
-                          Card.new('3', 'C'),
-                          Card.new('5', 'C'),
-                          Card.new('8', 'S'),
-                          Card.new('K', 'C')]) }
+        let(:hand_b) { random_hand }
         it { should be_true }
       end
 

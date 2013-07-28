@@ -1,4 +1,5 @@
 require 'rspec/core'
+require './lib/pack'
 
 CARDS_IN_HAND = 5
 
@@ -9,4 +10,7 @@ def straight_flush(start_value, suit)
   end
   Hand.new(cards)
 end
+
+def random_hand
+  Pack.new.deal(CARDS_IN_HAND)
 end
