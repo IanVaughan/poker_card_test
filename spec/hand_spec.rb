@@ -77,11 +77,7 @@ describe Hand do
         # could create a starting point and iterate over every combo
         # i.e 2C, 3C, 4C, 5C, 6C, then 3C, 4C, 5C, 6C, 7C, etc
         # Could also create helper methods to give a range and return a Hand
-        let(:cards) { [Card.new('2', 'C'),
-                      Card.new('3', 'C'),
-                      Card.new('4', 'C'),
-                      Card.new('5', 'C'),
-                      Card.new('6', 'C')] }
+        let(:cards) { straight_flush_cards('2', 'C') }
         it { should be_true }
       end
 
@@ -142,7 +138,7 @@ describe Hand do
     subject { hand.beats?(hand_b) }
 
     context 'with a straight_flush' do
-      let(:cards) { straight_flush('3', 'C') }
+      let(:cards) { straight_flush_hand('3', 'C') }
 
       describe 'when other hand is not a straight flush' do
         let(:hand_b) { random_hand }
@@ -150,12 +146,12 @@ describe Hand do
       end
 
       describe 'when other hand is a higher straight flush' do
-        let(:hand_b) { straight_flush('5', 'H') }
+        let(:hand_b) { straight_flush_hand('5', 'H') }
         it { should be_false }
       end
 
       describe 'when other hand is a lower straight flush' do
-        let(:hand_b) { straight_flush('2', 'H') }
+        let(:hand_b) { straight_flush_hand('2', 'H') }
         it { should be_true }
       end
     end

@@ -3,12 +3,15 @@ require './lib/pack'
 
 CARDS_IN_HAND = 5
 
-def straight_flush(start_value, suit)
+def straight_flush_cards(start_value, suit)
   v = Pack::VALUES.index(start_value)
-  cards = CARDS_IN_HAND.times.collect do |c|
+  CARDS_IN_HAND.times.collect do |c|
     Card.new(Pack::VALUES[v+c], suit)
   end
-  Hand.new(cards)
+end
+
+def straight_flush_hand(start_value, suit)
+  Hand.new(straight_flush_cards(start_value, suit))
 end
 
 def random_hand
