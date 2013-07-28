@@ -67,7 +67,6 @@ describe Hand do
     end
   end
 
-  #  let(:hand) { described_class.new(hand) }
   context "rules" do
     describe "finds a Straight flush" do
       subject { hand.straight_flush? }
