@@ -23,8 +23,9 @@ class Pack
 
   def deal(number)
     return if number > count
-    number.times { @dealt << @cards.delete_at(rand(count)) }
-    @dealt
-    Hand.new(@dealt)
+    dealt = []
+    number.times { dealt << @cards.delete_at(rand(count)) }
+    @dealt += dealt
+    Hand.new(dealt)
   end
 end

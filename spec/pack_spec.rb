@@ -48,6 +48,12 @@ describe Pack do
       (dealt + hand.cards).uniq!.should be_nil
     end
 
+    it "should deal multiple hands" do
+      [pack.deal(5), pack.deal(5), pack.deal(5)]
+      dealt.count.should == 52 - 15
+      pack.instance_variable_get(:@dealt).count.should == 15
+    end
+
     it "cannot deal more cards than are in the pack" do
       # Could raise or return how many are left, depends whats best later on really.
       # bit bad as its not using the let :hand defined above
