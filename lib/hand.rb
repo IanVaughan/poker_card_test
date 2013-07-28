@@ -12,6 +12,17 @@ class Hand
     @cards.count
   end
 
+  def beats?(other_hand)
+    if straight_flush? || other_hand.straight_flush?
+      return true if straight_flush? && !other_hand.straight_flush?
+      return false if !straight_flush? && other_hand.straight_flush?
+      if straight_flush? && other_hand.straight_flush?
+        return sort.last.value > other_hand.sort.last.value ? true : false
+      end
+    end
+    raise
+  end
+
   def straight_flush?
     return false unless same_suit? && sequential?
     true

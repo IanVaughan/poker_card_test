@@ -67,6 +67,7 @@ describe Hand do
     end
   end
 
+  #  let(:hand) { described_class.new(hand) }
   context "rules" do
     describe "finds a Straight flush" do
       subject { hand.straight_flush? }
@@ -112,5 +113,45 @@ describe Hand do
     it "finds Two Pairs"
     it "finds Pair"
     it "finds High Card"
+  end
+
+  context "finding a winning hand" do
+    subject { hand.beats?(hand_b) }
+
+    context 'with a straight_flush' do
+      let(:cards) { [Card.new('3', 'C'),
+                        Card.new('4', 'C'),
+                        Card.new('5', 'C'),
+                        Card.new('6', 'C'),
+                        Card.new('7', 'C')] }
+
+      describe 'when other hand is not a straight flush' do
+        let(:hand_b) { Hand.new([
+                          Card.new('2', 'C'),
+                          Card.new('3', 'C'),
+                          Card.new('5', 'C'),
+                          Card.new('8', 'S'),
+                          Card.new('K', 'C')]) }
+        it { should be_true }
+      end
+
+      describe 'when other hand is a higher straight flush' do
+        let(:hand_b) { Hand.new([Card.new('5', 'H'),
+                        Card.new('9', 'H'),
+                        Card.new('7', 'H'),
+                        Card.new('8', 'H'),
+                        Card.new('6', 'H')]) }
+        it { should be_false }
+      end
+
+      describe 'when other hand is a lower straight flush' do
+        let(:hand_b) { Hand.new([Card.new('2', 'C'),
+                        Card.new('3', 'C'),
+                        Card.new('4', 'C'),
+                        Card.new('5', 'C'),
+                        Card.new('6', 'C')]) }
+        it { should be_true }
+      end
+    end
   end
 end
