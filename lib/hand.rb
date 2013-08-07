@@ -38,7 +38,7 @@ class Hand
   end
 
   def straight_flush?
-    (same_suit? && sequential?) ? true : false
+    same_suit? && sequential?
   end
 
   def four_of_a_kind?
