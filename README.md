@@ -39,3 +39,7 @@ A poker hand consists of 5 cards dealt from the deck. Poker hands are ranked by 
 
     rspec
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/IanVaughan/poker_card_test/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
