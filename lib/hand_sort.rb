@@ -1,16 +1,11 @@
 require 'card'
 require 'pack'
 
-class Hand
+class HandSort
   attr_reader :cards
 
   def initialize cards
-    @cards = cards
-    @cards = sort
-  end
-
-  def count
-    @cards.count
+    @cards = cards.sort
   end
 
   def highest_card
@@ -51,10 +46,6 @@ class Hand
 
   def occurance_count_of value
     @cards.count { |c| c.value == value }
-  end
-
-  def sort
-    @cards.sort { |c1, c2| Pack::VALUES.index(c1.value) <=> Pack::VALUES.index(c2.value) }
   end
 
   def sequential?
